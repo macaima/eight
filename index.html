@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Beloved</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0088ff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      border-radius: 50%;
+      margin-top: 20px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    img:hover {
+      transform: scale(1.2);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #ff6b6b;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #e64e4e;
+    }
+
+    .music-player {
+      display: none; /* video iframe disembunyikan */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>My Beloved Sayangkuu, cintakuu, duniakuu</h1>
+    <p>You make my heart smile every day.</p>
+    <img src="sayang.jpg" alt="Your Beloved" id="myImage" onclick="toggleHeart()">
+    <br>
+    <button onclick="showLove()">Show Love</button>
+    <br>
+    <button onclick="playMusic()">Play Music</button>
+    <button onclick="pauseMusic()">Pause Music</button>
+
+    <!-- Iframe YouTube disembunyikan (suara tetap keluar) -->
+    <div class="music-player">
+      <iframe id="ytplayer" width="0" height="0"
+        src="https://www.youtube.com/embed/kX1O93X77d4?enablejsapi=1"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer');
+    }
+
+    function playMusic() {
+      if (player && typeof player.playVideo === "function") {
+        player.playVideo();
+      }
+    }
+
+    function pauseMusic() {
+      if (player && typeof player.pauseVideo === "function") {
+        player.pauseVideo();
+      }
+    }
+
+    function showLove() {
+      alert("Haii sayangkuu, cintakuu, duniakuu, sudah 8 bulan kita bersama, banyak suka, duka yang kita lewati bersama tapi aku senang melewati itu semua hehe, i just wanna say thank you for everything, i love you so much😘😘😘!");
+    }
+
+    function toggleHeart() {
+      var img = document.getElementById("myImage");
+      img.classList.toggle("hearted");
+    }
+  </script>
+
+</body>
+</html>
